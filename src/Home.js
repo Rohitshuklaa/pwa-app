@@ -30,9 +30,8 @@ export default function Home() {
             lng  :  75.80345885
         },
 
-    ]
-    
-
+    ]  
+      
     useEffect(() => {
         findMyCoordinates();
     }, [])
@@ -40,7 +39,6 @@ export default function Home() {
     function findMyCoordinates() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                // const bdcAPI = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`
                 setLatitude(position.coords.latitude)
                 setLongitude(position.coords.longitude)
 
@@ -52,18 +50,6 @@ export default function Home() {
         }
     }
 
-    // function getAPI(bdcAPI){
-    // http.open("GET", bdcAPI)
-    // http.send()
-    // http.onreadystatechange = function() {
-    //     if(this.readyState === 4 && this.status ===200 ){
-    //         result.innerHTML = this.responseText
-    //         const results = JSON.parse(this.responseText)
-    //         console.log(results.locality)
-    //     }
-    // } 
-
-    // }
     return (
         <div>
             Home component
@@ -78,19 +64,17 @@ export default function Home() {
                
                {data.map((e)=>{
                 {console.log("map")}
-                return(
-
-                
+                return(               
                              <AnyReactComponent
                              lat={e.lat}
                              lng={e.lng}
                              text={e.name}
-                         />
-                    
+                         />        
                     )
                 })}
                     </GoogleMapReact>
             </div>
         </div>
+       
     )
 }
